@@ -41,6 +41,8 @@ class GameBoard {
         else {
           board[row].add(Road());
         }
+        board[row][col].row = row;
+        board[row][col].column = col;
       }
     }
   }
