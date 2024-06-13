@@ -7,7 +7,7 @@ import 'package:ggg_board_game/models/architect.dart';
 import 'package:ggg_board_game/models/placement.dart';
 import 'package:ggg_board_game/models/obstacle.dart';
 
-class BoardTile extends StatefulWidget {
+class BoardTile extends StatelessWidget {
   final Placement placement;
   final bool isHighlighted;
   final int column;
@@ -16,18 +16,8 @@ class BoardTile extends StatefulWidget {
   
   const BoardTile({super.key, required this.placement, required this.isHighlighted, required this.onTapped, required this.column, required this.row});
 
-  @override
-  State<BoardTile> createState() => _BoardTileState();
-}
-
-class _BoardTileState extends State<BoardTile> {
-  late Placement _placement;
-
-  @override
-  void initState() {
-    super.initState();
-    _placement = widget.placement;
-  }
+  // @override
+  // State<BoardTile> createState() => _BoardTileState();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +27,7 @@ class _BoardTileState extends State<BoardTile> {
       height: 100.0,
       decoration: boxDecoration(),
       child: TextButton(onPressed: () {
-        widget.onTapped(widget.column, widget.row);
+        onTapped(column, row);
         //currentPlayer.action(column, row, position)
         //player.takeResource
       },
@@ -47,20 +37,20 @@ class _BoardTileState extends State<BoardTile> {
   }
 
   Widget icon() {
-    if (_placement is Obstacle) {
+    if (placement is Obstacle) {
       return const Image(image: AssetImage('assets/obstacole/copac.png'));
       //return const Image(image: AssetImage('assets/tabere/acrobat1.png'));
     }
 
-    if (_placement is Archer) {
+    if (placement is Archer) {
       return const Image(image: AssetImage('assets/jucatori/jarcas1.png'));
     }
 
-    if (_placement is Architect) {
+    if (placement is Architect) {
       return const Image(image: AssetImage('assets/jucatori/jarhitect1.png'));
     }
 
-    if (_placement is Acrobat) {
+    if (placement is Acrobat) {
       return const Image(image: AssetImage('assets/jucatori/jacrobat1.png'));
     }
     
@@ -68,7 +58,7 @@ class _BoardTileState extends State<BoardTile> {
   }
 
   Color backgroundColor() {
-    return widget.isHighlighted ? Colors.yellow : Colors.green;
+    return isHighlighted ? Colors.yellow : Colors.green;
   }
 
   BoxDecoration boxDecoration() {
@@ -92,3 +82,14 @@ class _BoardTileState extends State<BoardTile> {
       ;
   }
 }
+
+// class _BoardTileState extends State<BoardTile> {
+//   late Placement _placement;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _placement = widget.placement;
+//   }
+  
+// }
