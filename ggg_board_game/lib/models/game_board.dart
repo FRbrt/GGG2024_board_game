@@ -10,11 +10,13 @@ class GameBoard {
 
   List<List<Placement>> board = [[]];
 
-  void init(int rows, int cols, int nrOfObstacles) {
+  GameBoard(int rows, int cols, int nrOfObstacles) {
+    board = List<List<Placement>>.filled(rows, List.filled(cols, Road()), growable: true);
+
     var obstacleIndexes = genObstacleIndexes(rows, cols, nrOfObstacles);
 
+  for (var row = 0; row < rows; row++) {
     for (var col = 0; col < cols; col++) {
-      for (var row = 0; row < rows; row++) {
         var isObstacle = obstacleIndexes.any( (p) => p[rowKey] == row && p[colKey] == col );
         if (isObstacle) {
           board[row][col] = Obstacle();
@@ -35,7 +37,7 @@ class GameBoard {
       var row = random.nextInt(rows);
       var col = random.nextInt(cols);
       var pair = {
-        rowKey : row,
+        rowKey: row,
         colKey: col
       };
 

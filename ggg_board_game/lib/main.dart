@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ggg_board_game/models/game_board.dart';
 import 'package:ggg_board_game/views/board.dart';
 import 'package:ggg_board_game/views/board_tile.dart';
 
@@ -12,6 +13,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
       title: 'Game APP',
       theme: ThemeData(
