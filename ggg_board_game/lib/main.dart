@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ggg_board_game/models/game_board.dart';
 import 'package:ggg_board_game/views/board.dart';
 import 'package:ggg_board_game/views/board_tile.dart';
 
 void main() {
-  var g = GameBoard(5, 6, 3);
-  print(g.board);
-//  runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,8 +12,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-
     return MaterialApp(
       title: 'Game APP',
       theme: ThemeData(
@@ -40,11 +35,14 @@ class MyApp extends StatelessWidget {
       ),
       home: 
       Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text("BBB"),
+          backgroundColor: Colors.black,
+          title: const Text("The GGGame", style: TextStyle(color: Colors.white)),
         ),
         body: const Board()
       ),
       );
   }
 }
+
