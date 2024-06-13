@@ -6,4 +6,9 @@ class Acrobat implements Player {
   List<Placement>? canMove(List<Placement> path) {
     return null;
   }
+  
+  @override
+  int team;
+
+  Acrobat(this.team);
 }

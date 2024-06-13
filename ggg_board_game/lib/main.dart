@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: const Text("The GGGame", style: TextStyle(color: Colors.white)),
+          title: const Text("Hunter Games", style: TextStyle(color: Colors.white)),
         ),
         body: Board(boardModel: GameBoard(13, 7, 30))
       ),

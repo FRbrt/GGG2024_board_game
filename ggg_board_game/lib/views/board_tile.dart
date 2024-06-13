@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:ggg_board_game/models/acrobat.dart';
@@ -6,6 +5,7 @@ import 'package:ggg_board_game/models/archer.dart';
 import 'package:ggg_board_game/models/architect.dart';
 import 'package:ggg_board_game/models/placement.dart';
 import 'package:ggg_board_game/models/obstacle.dart';
+import 'package:ggg_board_game/models/player.dart';
 
 class BoardTile extends StatelessWidget {
   final Placement placement;
@@ -39,19 +39,22 @@ class BoardTile extends StatelessWidget {
   Widget icon() {
     if (placement is Obstacle) {
       return const Image(image: AssetImage('assets/obstacole/copac.png'));
-      //return const Image(image: AssetImage('assets/tabere/acrobat1.png'));
     }
 
+    if (placement is Player) {
+      var team = (placement as Player).team;
+
     if (placement is Archer) {
-      return const Image(image: AssetImage('assets/jucatori/jarcas1.png'));
+      return Image(image: AssetImage('assets/jucatori/jarcas$team.png'));
     }
 
     if (placement is Architect) {
-      return const Image(image: AssetImage('assets/jucatori/jarhitect1.png'));
+      return Image(image: AssetImage('assets/jucatori/jarhitect$team.png'));
     }
 
     if (placement is Acrobat) {
-      return const Image(image: AssetImage('assets/jucatori/jacrobat1.png'));
+      return Image(image: AssetImage('assets/jucatori/jacrobat$team.png'));
+    }
     }
     
     return Container();

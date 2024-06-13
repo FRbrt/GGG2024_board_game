@@ -5,27 +5,27 @@ import 'package:ggg_board_game/models/placement.dart';
 
 class Players {
   var players = {
-    Archer(): {
+    Archer(1): {
       "row": 0,
       "col": 0,
     },
-    Acrobat(): {
+    Acrobat(1): {
       "row": 0,
       "col": 0,
     },
-    Architect(): {
+    Architect(1): {
       "row": 0,
       "col": 0,
     },
-    Archer(): {
+    Archer(2): {
       "row": 0,
       "col": 0,
     },
-    Acrobat(): {
+    Acrobat(2): {
       "row": 0,
       "col": 0,
     },
-    Architect(): {
+    Architect(2): {
       "row": 0,
       "col": 0,
     },
@@ -63,29 +63,29 @@ class Players {
     var lastRow = rows - 1;
 
     players = {
-      Archer(): {
+      Archer(1): {
         "row": 0,
-        "col": teamInitialColumns[0],
+        "col": teamInitialColumns[0]
       },
-      Acrobat(): {
+      Acrobat(1): {
         "row": 0,
-        "col": teamInitialColumns[1],
+        "col": teamInitialColumns[1]
       },
-      Architect(): {
+      Architect(1): {
         "row": 0,
-        "col": teamInitialColumns[2],
+        "col": teamInitialColumns[2]
       },
-      Archer(): {
+      Archer(2): {
         "row": lastRow,
-        "col": teamInitialColumns[0],
+        "col": teamInitialColumns[0]
       },
-      Acrobat(): {
+      Acrobat(2): {
         "row": lastRow,
-        "col": teamInitialColumns[1],
+        "col": teamInitialColumns[1]
       },
-      Architect(): {
+      Architect(2): {
         "row": lastRow,
-        "col": teamInitialColumns[2],
+        "col": teamInitialColumns[2]
       },
     };
   }
