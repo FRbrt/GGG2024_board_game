@@ -61,7 +61,6 @@ class _BoardTileState extends State<BoardTile> {
     }
 
     if (_placement is Archer) {
-      var archer = _placement as Archer;
       return const Image(image: AssetImage('assets/jucatori/jarcas1.png'));
     }
 

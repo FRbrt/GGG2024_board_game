@@ -17,12 +17,12 @@ class _BoardState extends State<Board> {
   
   late var boardModel;
 
-  void _updateGridElement(int row, int col) {
-    setState(() {
-      // Example update: Change the tapped element
-      boardModel.update();
-    });
-  }
+  // void _updateGridElement(int row, int col) {
+  //   setState(() {
+  //     // Example update: Change the tapped element
+  //     boardModel.update();
+  //   });
+  // }
 
 @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _BoardState extends State<Board> {
           int col = index % columns; // Modulo to get column index
           return BoardTile(isHighlighted: false, placement: boardModel.board[row][col], onTapped: (column, row) {
             
-          },);
+          });
         },
       );
   }
