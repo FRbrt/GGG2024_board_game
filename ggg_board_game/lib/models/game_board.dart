@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ggg_board_game/models/archer.dart';
 import 'package:ggg_board_game/models/obstacle.dart';
 import 'package:ggg_board_game/models/placement.dart';
 import 'package:ggg_board_game/models/road.dart';
@@ -11,35 +12,26 @@ class GameBoard {
   List<List<Placement>> board = [[]];
 
   GameBoard(int rows, int cols, int nrOfObstacles) {
-    board = List<List<Placement>>.filled(rows, List.filled(cols, Road()), growable: true);
+    board = List<List<Placement>>.filled(rows, List<Placement>.filled(cols, Road()),
+        growable: true);
 
     var obstacleIndexes = genObstacleIndexes(rows, cols, nrOfObstacles);
-
-  for (var row = 0; row < rows; row++) {
-    for (var col = 0; col < cols; col++) {
-        var isObstacle = obstacleIndexes.any( (p) => p[rowKey] == row && p[colKey] == col );
-        if (isObstacle) {
-          board[row][col] = Obstacle();
-        }
-        else {
-          board[row][col] = Road();
-        }
-      }
-    }
+    obstacleIndexes.forEach( (obstacleIndex) {
+      int row = obstacleIndex[rowKey] as int;
+      int col = obstacleIndex[colKey] as int;
+      board[row][col] = Obstacle();
+    });
   }
 
   List<Map<String, int>> genObstacleIndexes(int rows, int cols, int pairCount) {
-    List<Map<String, int>> generatedPairs = [{}];
+    List<Map<String, int>> generatedPairs = List.empty(growable: true);
     var random = Random();
 
     var pairNumber = 0;
     while (pairNumber < pairCount) {
       var row = random.nextInt(rows);
       var col = random.nextInt(cols);
-      var pair = {
-        rowKey: row,
-        colKey: col
-      };
+      var pair = {rowKey: row, colKey: col};
 
       if (isPairValid(generatedPairs, pair)) {
         generatedPairs.add(pair);
