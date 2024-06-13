@@ -1,26 +1,25 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:ggg_board_game/models/placement.dart';
+import 'package:ggg_board_game/models/obstacle.dart';
 
 class BoardTile extends StatefulWidget {
-  const BoardTile({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  final Placement placement;
+  const BoardTile({super.key, required this.placement});
 
   @override
   State<BoardTile> createState() => _BoardTileState();
 }
 
 class _BoardTileState extends State<BoardTile> {
+  late Placement _placement;
+
+  @override
+  void initState() {
+    super.initState();
+    _placement = widget.placement; // Initialize the counter with the passed parameter
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,9 @@ class _BoardTileState extends State<BoardTile> {
       ),
       child: TextButton(onPressed: () {
         
-      }, child: const Image(image: AssetImage('assets/obstacole/copac.png'))),
+      }, 
+      child: (_placement is Obstacle) ? const Image(image: AssetImage('assets/obstacole/copac.png')) : Container()
+      ),
     );
   }
 }
