@@ -4,31 +4,30 @@ import 'package:ggg_board_game/models/architect.dart';
 import 'package:ggg_board_game/models/placement.dart';
 
 class Players {
-
   var players = {
-    Archer() : {
-      "row" : 0,
-      "col" : 0,
+    Archer(): {
+      "row": 0,
+      "col": 0,
     },
-    Acrobat() : {
-      "row" : 0,
-      "col" : 0,
+    Acrobat(): {
+      "row": 0,
+      "col": 0,
     },
-    Architect() : {
-      "row" : 0,
-      "col" : 0,
+    Architect(): {
+      "row": 0,
+      "col": 0,
     },
-    Archer() : {
-      "row" : 0,
-      "col" : 0,
+    Archer(): {
+      "row": 0,
+      "col": 0,
     },
-    Acrobat() : {
-      "row" : 0,
-      "col" : 0,
+    Acrobat(): {
+      "row": 0,
+      "col": 0,
     },
-    Architect() : {
-      "row" : 0,
-      "col" : 0,
+    Architect(): {
+      "row": 0,
+      "col": 0,
     },
   };
   var _currentIndex = 0;
@@ -58,5 +57,36 @@ class Players {
     var player = players.entries.elementAt(_currentIndex);
     player.value["row"] = toRow;
     player.value["col"] = toCol;
+  }
+
+  void initializePositions(int rows, List<int> teamInitialColumns) {
+    var lastRow = rows - 1;
+
+    players = {
+      Archer(): {
+        "row": 0,
+        "col": teamInitialColumns[0],
+      },
+      Acrobat(): {
+        "row": 0,
+        "col": teamInitialColumns[1],
+      },
+      Architect(): {
+        "row": 0,
+        "col": teamInitialColumns[2],
+      },
+      Archer(): {
+        "row": lastRow,
+        "col": teamInitialColumns[0],
+      },
+      Acrobat(): {
+        "row": lastRow,
+        "col": teamInitialColumns[1],
+      },
+      Architect(): {
+        "row": lastRow,
+        "col": teamInitialColumns[2],
+      },
+    };
   }
 }

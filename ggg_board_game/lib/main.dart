@@ -7,6 +7,9 @@ void main() {
   print(gb.board);
   gb.moveTo(3, 3);
   print(gb.board);
+  gb.moveTo(1, 1);
+  print(gb.board);
+
   // runApp(const MyApp());
 }
 

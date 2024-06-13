@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:ggg_board_game/models/board_config.dart';
 import 'package:ggg_board_game/models/obstacle.dart';
 import 'package:ggg_board_game/models/placement.dart';
@@ -18,40 +17,12 @@ class GameBoard {
 
   late BoardConfig boardConfig;
 
-  GameBoard.cfg(this.boardConfig) {
-    var rows = boardConfig.rows;
-    var cols = boardConfig.cols;
-    var nrOfObstacles = boardConfig.nrOfObstacles;
-
-    teamInitialColumns.add(0);
-    teamInitialColumns.add((cols - 1) ~/ 2);
-    teamInitialColumns.add(cols - 1);
-
-    board = List<List<Placement>>.empty(growable: true);
-
-    var obstacleIndexes = genObstacleIndexes(rows, cols, nrOfObstacles);
-    for (var row = 0; row < rows; row++) {
-      board.add(List<Placement>.empty(growable: true));
-      for (var col = 0; col < cols; col++) {
-        var isObstacle =
-            obstacleIndexes.any((p) => p[rowKey] == row && p[colKey] == col);
-        if (isObstacle) {
-          board[row].add(Obstacle());
-        }
-        else {
-          board[row].add(Road());
-        }
-        board[row][col].row = row;
-        board[row][col].column = col;
-      }
-    }
-  }
-
   GameBoard(int rows, int cols, int nrOfObstacles) {
     boardConfig = BoardConfig(rows, cols, nrOfObstacles);
     teamInitialColumns.add(0);
     teamInitialColumns.add((cols - 1) ~/ 2);
     teamInitialColumns.add(cols - 1);
+    _players.initializePositions(rows, teamInitialColumns);
 
     board = List<List<Placement>>.empty(growable: true);
 
@@ -66,7 +37,8 @@ class GameBoard {
           board[row].add(Obstacle());
         }
         else if (isPlayerPosition) {
-          board[row].add(_players.next());
+          board[row].add(_players.current());
+          _players.next();
         }
         else {
           board[row].add(Road());
