@@ -38,8 +38,10 @@ class MyApp extends StatelessWidget {
       ),
       home: 
       Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text("BBB"),
+          backgroundColor: Colors.black,
+          title: const Text("The GGGame", style: TextStyle(color: Colors.white)),
         ),
         body: const Board()
       ),
