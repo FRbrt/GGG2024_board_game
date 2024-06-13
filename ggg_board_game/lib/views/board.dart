@@ -13,7 +13,7 @@ class Board extends StatefulWidget {
 
 class _BoardState extends State<Board> {
   int rows = 10;
-  int columns = 6;
+  int columns = 7;
   int nrOfObstacles = 5 * 6;
   
   late var boardModel;
@@ -32,11 +32,7 @@ class _BoardState extends State<Board> {
         itemBuilder: (context, index) {
           int row = index ~/ columns; // Integer division to get row index
           int col = index % columns; // Modulo to get column index
-          return Card(
-            child: Center(
-              child: BoardTile(isHighlighted: false, placement: boardModel.board[row][col])
-            ),
-          );
+          return BoardTile(isHighlighted: false, placement: boardModel.board[row][col]);
         },
       );
   }
