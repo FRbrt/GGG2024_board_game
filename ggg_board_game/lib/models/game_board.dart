@@ -12,15 +12,22 @@ class GameBoard {
   List<List<Placement>> board = [[]];
 
   GameBoard(int rows, int cols, int nrOfObstacles) {
-    board = List<List<Placement>>.filled(rows, List<Placement>.filled(cols, Road()),
-        growable: true);
+    board = List<List<Placement>>.empty(growable: true);
 
     var obstacleIndexes = genObstacleIndexes(rows, cols, nrOfObstacles);
-    obstacleIndexes.forEach( (obstacleIndex) {
-      int row = obstacleIndex[rowKey] as int;
-      int col = obstacleIndex[colKey] as int;
-      board[row][col] = Obstacle();
-    });
+    for (var row = 0; row < rows; row++) {
+      board.add(List<Placement>.empty(growable: true));
+      for (var col = 0; col < cols; col++) {
+        var isObstacle =
+            obstacleIndexes.any((p) => p[rowKey] == row && p[colKey] == col);
+        if (isObstacle) {
+          board[row].add(Obstacle());
+        }
+        else {
+          board[row].add(Road());
+        }
+      }
+    }
   }
 
   List<Map<String, int>> genObstacleIndexes(int rows, int cols, int pairCount) {
