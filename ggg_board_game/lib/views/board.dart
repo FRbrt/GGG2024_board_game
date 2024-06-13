@@ -11,17 +11,26 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  int rows = 10;
+  int rows = 13;
   int columns = 7;
   int nrOfObstacles = 5 * 6;
   
   late var boardModel;
+
+  void _updateGridElement(int row, int col) {
+    setState(() {
+      // Example update: Change the tapped element
+      boardModel.update();
+    });
+  }
 
 @override
   Widget build(BuildContext context) {
     boardModel = GameBoard(rows, columns, nrOfObstacles);
     
   return GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: columns, // Set the number of columns
           crossAxisSpacing: 1.0, // Set the spacing between columns
