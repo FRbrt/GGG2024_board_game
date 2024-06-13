@@ -40,7 +40,7 @@ class _BoardState extends State<Board> {
         itemBuilder: (context, index) {
           int row = index ~/ columns; // Integer division to get row index
           int col = index % columns; // Modulo to get column index
-          return BoardTile(isHighlighted: false, placement: boardModel.board[row][col], colum: col,row: row, onTapped: (column, row) {
+          return BoardTile(isHighlighted: false, placement: boardModel.board[row][col], onTapped: (column, row) {
             
           },);
         },

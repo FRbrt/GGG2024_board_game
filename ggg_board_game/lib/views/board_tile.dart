@@ -10,11 +10,9 @@ import 'package:ggg_board_game/models/obstacle.dart';
 class BoardTile extends StatefulWidget {
   final Placement placement;
   final bool isHighlighted;
-  final int row;
-  final int colum;
   final Function(int, int) onTapped;
   
-  const BoardTile({super.key, required this.placement, required this.isHighlighted, required this.row, required this.colum, required this.onTapped});
+  const BoardTile({super.key, required this.placement, required this.isHighlighted, required this.onTapped});
 
   @override
   State<BoardTile> createState() => _BoardTileState();
@@ -40,15 +38,15 @@ class _BoardTileState extends State<BoardTile> {
       boxShadow: [
       BoxShadow(
       color: Colors.black.withOpacity(0.5),
-      spreadRadius: 5,
+      spreadRadius: 3,
       blurRadius: 7,
       offset: Offset(0, 3), // changes position of shadow
       ),
       ],
       ),
       child: TextButton(onPressed: () {
-        print('${widget.colum} , ${widget.row}');
-        widget.onTapped(widget.colum, widget.row);
+        print('${widget.placement.column} , ${widget.placement.row}');
+        widget.onTapped(widget.placement.column, widget.placement.row);
         //currentPlayer.action(column, row, position)
         //player.takeResource
       },
