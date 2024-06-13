@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ggg_board_game/views/board.dart';
-import 'package:ggg_board_game/views/board_tile.dart';
 
 void main() {
   runApp(const MyApp());

@@ -10,7 +10,11 @@ import 'package:ggg_board_game/models/obstacle.dart';
 class BoardTile extends StatefulWidget {
   final Placement placement;
   final bool isHighlighted;
-  const BoardTile({super.key, required this.placement, required this.isHighlighted});
+  final int row;
+  final int colum;
+  final Function(int, int) onTapped;
+  
+  const BoardTile({super.key, required this.placement, required this.isHighlighted, required this.row, required this.colum, required this.onTapped});
 
   @override
   State<BoardTile> createState() => _BoardTileState();
@@ -18,13 +22,11 @@ class BoardTile extends StatefulWidget {
 
 class _BoardTileState extends State<BoardTile> {
   late Placement _placement;
-  late bool isHighlighted;
 
   @override
   void initState() {
     super.initState();
-    _placement = widget.placement; // Initialize the counter with the passed parameter
-    isHighlighted = widget.isHighlighted;
+    _placement = widget.placement;
   }
 
   @override
@@ -33,19 +35,21 @@ class _BoardTileState extends State<BoardTile> {
   return Container(
       width: 100.0, // width of the square tile
       height: 100.0,
-            decoration: BoxDecoration(
-              color: backgroundColor(), // Background color// Rounded corners
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
+      decoration: BoxDecoration(
+      color: backgroundColor(), // Background color// Rounded corners
+      boxShadow: [
+      BoxShadow(
+      color: Colors.black.withOpacity(0.5),
+      spreadRadius: 5,
+      blurRadius: 7,
+      offset: Offset(0, 3), // changes position of shadow
+      ),
+      ],
+      ),
       child: TextButton(onPressed: () {
-        //currentPlayer.move(position)
+        print('${widget.colum} , ${widget.row}');
+        widget.onTapped(widget.colum, widget.row);
+        //currentPlayer.action(column, row, position)
         //player.takeResource
       },
       child: (_placement is Obstacle) ? const Image(image: AssetImage('assets/obstacole/copac.png')) : Container()
@@ -75,6 +79,6 @@ class _BoardTileState extends State<BoardTile> {
   }
 
   Color backgroundColor() {
-    return isHighlighted ? Colors.green : Colors.yellow;
+    return widget.isHighlighted ? Colors.yellow : Colors.green;
   }
 }
