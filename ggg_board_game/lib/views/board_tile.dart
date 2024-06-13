@@ -50,7 +50,7 @@ class _BoardTileState extends State<BoardTile> {
         //currentPlayer.action(column, row, position)
         //player.takeResource
       },
-      child: (_placement is Obstacle) ? const Image(image: AssetImage('assets/obstacole/copac.png')) : Container()
+      child: icon()
       ),
     );
   }
