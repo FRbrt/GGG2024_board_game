@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ggg_board_game/models/archer.dart';
 import 'package:ggg_board_game/models/game_board.dart';
+import 'package:ggg_board_game/models/obstacle.dart';
 import 'board_tile.dart';
 
 class Board extends StatefulWidget {
@@ -31,7 +33,7 @@ class _BoardState extends State<Board> {
         int col = index % columns; // Modulo to get column index
         // String element = gridElements[row][col];
 
-        BoardTile(placement: boardModel.board[row][col]);
+        BoardTile(placement: boardModel.board[row][col], isHighlighted: false);
       },
     );
   }
