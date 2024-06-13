@@ -12,9 +12,9 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  int rows = 20;
+  int rows = 10;
   int columns = 6;
-  int nrOfObstacles = 3;
+  int nrOfObstacles = 5 * 6;
   
   late var boardModel;
 
@@ -22,19 +22,24 @@ class _BoardState extends State<Board> {
   Widget build(BuildContext context) {
     boardModel = GameBoard(rows, columns, nrOfObstacles);
     
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: columns, // Number of columns
-        childAspectRatio: 1.0, // Square tiles (you can adjust as needed)
-      ),
-      itemCount: rows * columns,
-      itemBuilder: (context, index) {
-        int row = index ~/ columns; // Integer division to get row index
-        int col = index % columns; // Modulo to get column index
-        // String element = gridElements[row][col];
-
-        BoardTile(placement: boardModel.board[row][col], isHighlighted: false);
-      },
-    );
+  return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: columns, // Set the number of columns
+          crossAxisSpacing: 1.0, // Set the spacing between columns
+          mainAxisSpacing: 1.0, // Set the spacing between rows
+        ),
+        itemCount: rows * columns,
+        itemBuilder: (context, index) {
+          int row = index ~/ columns; // Integer division to get row index
+          int col = index % columns; // Modulo to get column index
+          return Card(
+            child: Center(
+              child: BoardTile(isHighlighted: false, placement: boardModel.board[row][col])
+            ),
+          );
+        },
+      );
   }
 }
+
+
