@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.black,
           title: const Text("The GGGame", style: TextStyle(color: Colors.white)),
         ),
-        body: const Board()
+        body: Board(boardModel: GameBoard(13, 7, 30))
       ),
       );
   }
