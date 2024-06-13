@@ -4,7 +4,9 @@ import 'package:ggg_board_game/views/board.dart';
 import 'package:ggg_board_game/views/board_tile.dart';
 
 void main() {
-  runApp(const MyApp());
+  var g = GameBoard(5, 6, 3);
+  print(g.board);
+//  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,10 +40,8 @@ class MyApp extends StatelessWidget {
       ),
       home: 
       Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Text("The GGGame", style: TextStyle(color: Colors.white)),
+          title: const Text("BBB"),
         ),
         body: const Board()
       ),

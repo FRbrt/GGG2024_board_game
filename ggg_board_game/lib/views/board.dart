@@ -14,11 +14,11 @@ class _BoardState extends State<Board> {
   int columns = 6;
   int nrOfObstacles = 3;
   
-  var boardModel = GameBoard();
+  var boardModel = GameBoard(3, 4, 2);
 
 @override
   Widget build(BuildContext context) {
-    boardModel.init(rows, columns, nrOfObstacles);
+    // boardModel.init(rows, columns, nrOfObstacles);
   int totalTiles = rows * columns;
    return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -26,7 +26,7 @@ class _BoardState extends State<Board> {
       ),
       itemCount: totalTiles,
       itemBuilder: (context, index) {
-        return BoardTile(title: "bla");
+        return BoardTile(placement: boardModel.board[index][index]);
       },
     );
   }
