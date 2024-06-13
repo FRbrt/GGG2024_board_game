@@ -12,13 +12,7 @@ class _BoardState extends State<Board> {
 
 @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "aaa",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("aaa"),
-        ),
-        body: GridView.count(
+    return  GridView.count(
           crossAxisCount: 5,
           children: List.generate(100, (index) {
             return Center(
@@ -28,9 +22,7 @@ class _BoardState extends State<Board> {
               ),
             );
           }),
-        ),
-      ),
-    );
+        );
   }
 }
 
